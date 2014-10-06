@@ -1,8 +1,8 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.67])
-AC_INIT([libbsd], m4_esyscmd([./get-version]), [libbsd@lists.freedesktop.org])
-AC_CONFIG_SRCDIR([src/fgetln.c])
+AC_INIT([libbsd-minimal], [0.7.0], [jason@lin.gl])
+AC_CONFIG_SRCDIR([src/strlcpy.c])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 
@@ -40,7 +40,7 @@ fi
 # Checks for libraries.
 
 # Checks for header files.
-AC_CHECK_HEADERS([sys/ndir.h sys/dir.h dir.h dirent.h])
+AC_CHECK_HEADERS([/ndir.h sys/dir.h dir.h dirent.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_UID_T
@@ -128,12 +128,7 @@ AC_CHECK_FUNCS([clearenv dirfd fopencookie __fpurge getexecname getline sysconf]
 AC_CONFIG_FILES([
 	Makefile
 	include/Makefile
-	man/Makefile
 	src/Makefile
-	src/libbsd.pc
-	src/libbsd-ctor.pc
-	src/libbsd-overlay.pc
-	test/Makefile
 ])
 AC_CONFIG_HEADERS([config.h])
 AC_OUTPUT

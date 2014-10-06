@@ -40,8 +40,8 @@
 #define LIBBSD_WCHAR_H
 
 #include <stddef.h>
-#include <sys/cdefs.h>
-#include <sys/types.h>
+#include <bsd/sys/cdefs.h>
+#include <stdlib.h>
 
 __BEGIN_DECLS
 wchar_t *fgetwln(FILE *stream, size_t *len);

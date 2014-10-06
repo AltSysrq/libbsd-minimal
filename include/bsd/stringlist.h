@@ -31,8 +31,8 @@
 
 #ifndef _STRINGLIST_H
 #define _STRINGLIST_H
-#include <sys/cdefs.h>
-#include <sys/types.h>
+#include <bsd/sys/cdefs.h>
+#include <stdlib.h>
 
 /*
  * Simple string list

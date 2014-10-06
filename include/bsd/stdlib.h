@@ -26,53 +26,18 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifdef LIBBSD_OVERLAY
-#include_next <stdlib.h>
-#else
-#include <stdlib.h>
-#endif
-
-/* For compatibility with NetBSD, which defines humanize_number here. */
-#ifdef LIBBSD_OVERLAY
-#include <libutil.h>
-#else
-#include <bsd/libutil.h>
-#endif
-
 #ifndef LIBBSD_STDLIB_H
 #define LIBBSD_STDLIB_H
 
-#include <sys/cdefs.h>
-#include <sys/stat.h>
+#include <bsd/sys/cdefs.h>
 #include <stdint.h>
 
 __BEGIN_DECLS
-u_int32_t arc4random();
-void arc4random_stir();
-void arc4random_addrandom(u_char *dat, int datlen);
-void arc4random_buf(void *_buf, size_t n);
-u_int32_t arc4random_uniform(u_int32_t upper_bound);
-
-int dehumanize_number(const char *str, int64_t *size);
-
 const char *getprogname(void);
 void setprogname(const char *);
-
-int heapsort (void *, size_t, size_t, int (*)(const void *, const void *));
-int mergesort(void *base, size_t nmemb, size_t size,
-              int (*cmp)(const void *, const void *));
-int radixsort(const unsigned char **base, int nmemb,
-              const unsigned char *table, unsigned endbyte);
-int sradixsort(const unsigned char **base, int nmemb,
-               const unsigned char *table, unsigned endbyte);
-
-void *reallocf(void *ptr, size_t size);
-void *reallocarray(void *ptr, size_t nmemb, size_t size);
-
 long long strtonum(const char *nptr, long long minval, long long maxval,
                    const char **errstr);
 
-char *getbsize(int *headerlenp, long *blocksizep);
 __END_DECLS
 
 #endif

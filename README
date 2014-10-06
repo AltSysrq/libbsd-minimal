@@ -1,31 +1,47 @@
-libbsd - Utility functions from BSD systems
+libbsd-minimal - Utility functions from BSD systems, compilable on Windows
 
 This library provides useful functions commonly found on BSD systems,
 and lacking on others like GNU systems, thus making it easier to port
 projects with strong BSD origins, without needing to embed the same
 code over and over again on each project.
 
+This version is a fork of libbsd. It only includes parts not dependent on
+system or C library characteristics. This version is hosted at
 
-Releases
---------
+  <https://github.com/AltSysrq/libbsd-minimal>
 
-  <http://libbsd.freedesktop.org/releases/>
+libbsd-minimal and libbsd cannot be used or even installed together. The only
+reason to ever use this version is if you need to (cross-)compile to a
+non-POSIX system like Windows.
 
+libbsd-minimal makes no attempt to be an "overlay", like libbsd does. If you
+include the <bsd/string.h> file, you get *only* the libbsd-minimal-specific
+functions, so you'll need to include <string.h> manually as well. In this
+respect it is incompatible with libbsd, but this removes the need for compiler
+support of #include_next.
 
-Mailing List
-------------
+Things like err which are expected to be partially provided by the host are
+instead pulled in full from the FreeBSD 10 source. This means libbsd-minimal
+might redefine host symbols.
 
-The subscription interface and web archives can be found at:
+libbsd-minimal pulls in FreeBSD 10's sysexits.h, since libbsd does not provide
+one.
 
-  <http://lists.freedesktop.org/mailman/listinfo/libbsd>
+There is no <bsd/bsd.h>, since no program needing it as a compatibility layer
+would include it anyway.
 
-The mail address is:
+I do not know whether the headers work under MSVC. <bsd/sys/freebsd-cdefs.h>
+could potentially cause problems.
 
-  libbsd@lists.freedesktop.org
+More information on the original libbsd can be found at the locations below.
 
+libbsd Official Site
+--------------------
 
-Source Repository
------------------
+  <http://libbsd.freedesktop.org/>
+
+libbsd Source Repository
+------------------------
 
   <http://cgit.freedesktop.org/libbsd>
   <git://anongit.freedesktop.org/git/libbsd>

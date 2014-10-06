@@ -1,6 +1,6 @@
-/*
- * Copyright © 2006 Robert Millan
- * Copyright © 2009, 2011 Guillem Jover <guillem@hadrons.org>
+/*-
+ * Copyright (c) 1993
+ *	The Regents of the University of California.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -10,39 +10,48 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 3. The name of the author may not be used to endorse or promote products
- *    derived from this software without specific prior written permission.
+ * 3. Neither the name of the University nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
- * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
- * AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL
- * THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
- * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
- * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ *
+ *	@(#)err.h	8.1 (Berkeley) 6/2/93
+ * $FreeBSD: release/10.0.0/include/err.h 203964 2010-02-16 19:39:50Z imp $
  */
 
-#ifdef LIBBSD_OVERLAY
-#include_next <err.h>
-#else
-#include <err.h>
-#endif
+#ifndef _ERR_H_
+#define	_ERR_H_
 
-#ifndef LIBBSD_ERR_H
-#define LIBBSD_ERR_H
-
-#include <sys/cdefs.h>
-
+#include <bsd/sys/cdefs.h>
 #include <stdarg.h>
 
 __BEGIN_DECLS
-extern void warnc (int code, const char *format, ...);
-extern void vwarnc (int code, const char *format, va_list ap);
-extern void errc (int status, int code, const char *format, ...);
-extern void verrc (int status, int code, const char *format, va_list ap);
+void	err(int, const char *, ...) __dead2 __printf0like(2, 3);
+void	verr(int, const char *, va_list) __dead2 __printf0like(2, 0);
+void	errc(int, int, const char *, ...) __dead2 __printf0like(3, 4);
+void	verrc(int, int, const char *, va_list) __dead2
+	    __printf0like(3, 0);
+void	errx(int, const char *, ...) __dead2 __printf0like(2, 3);
+void	verrx(int, const char *, va_list) __dead2 __printf0like(2, 0);
+void	warn(const char *, ...) __printf0like(1, 2);
+void	vwarn(const char *, va_list) __printf0like(1, 0);
+void	warnc(int, const char *, ...) __printf0like(2, 3);
+void	vwarnc(int, const char *, va_list) __printf0like(2, 0);
+void	warnx(const char *, ...) __printflike(1, 2);
+void	vwarnx(const char *, va_list) __printflike(1, 0);
+void	err_set_file(void *);
+void	err_set_exit(void (*)(int));
 __END_DECLS
 
-#endif
+#endif /* !_ERR_H_ */

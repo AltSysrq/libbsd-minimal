@@ -24,11 +24,7 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifdef LIBBSD_OVERLAY
-#include_next <sys/cdefs.h>
-#else
-#include <sys/cdefs.h>
-#endif
+#include <bsd/sys/freebsd-cdefs.h>
 
 #ifndef LIBBSD_SYS_CDEFS_H
 #define LIBBSD_SYS_CDEFS_H

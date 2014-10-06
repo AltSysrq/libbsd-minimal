@@ -30,7 +30,7 @@
 #ifndef	_SYS_TREE_H_
 #define	_SYS_TREE_H_
 
-#include <sys/cdefs.h>
+#include <bsd/sys/cdefs.h>
 
 /*
  * This file defines data structures for different types of trees:
@@ -88,7 +88,7 @@ struct {								\
 	SPLAY_RIGHT(tmp, field) = (head)->sph_root;			\
 	(head)->sph_root = tmp;						\
 } while (/*CONSTCOND*/ 0)
-	
+
 #define SPLAY_ROTATE_LEFT(head, tmp, field) do {			\
 	SPLAY_RIGHT((head)->sph_root, field) = SPLAY_LEFT(tmp, field);	\
 	SPLAY_LEFT(tmp, field) = (head)->sph_root;			\

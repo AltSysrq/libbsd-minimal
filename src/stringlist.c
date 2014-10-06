@@ -29,17 +29,17 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <sys/cdefs.h>
+#include <bsd/sys/cdefs.h>
 #if defined(LIBC_SCCS) && !defined(lint)
 __RCSID("$NetBSD: stringlist.c,v 1.12 2007/05/09 17:10:29 christos Exp $");
 #endif /* LIBC_SCCS and not lint */
 
 #include <assert.h>
-#include <err.h>
+#include <bsd/err.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stringlist.h>
+#include <bsd/stringlist.h>
 
 #define _DIAGASSERT(t)
 

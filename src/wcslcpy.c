@@ -27,7 +27,7 @@
  *	from OpenBSD: strlcpy.c,v 1.4 1999/05/01 18:56:41 millert Exp
  */
 
-#include <sys/cdefs.h>
+#include <bsd/sys/cdefs.h>
 #if 0
 #if defined(LIBC_SCCS) && !defined(lint)
 __RCSID("$NetBSD: wcslcpy.c,v 1.1 2000/12/23 23:14:36 itojun Exp $");
@@ -35,8 +35,9 @@ __RCSID("$NetBSD: wcslcpy.c,v 1.1 2000/12/23 23:14:36 itojun Exp $");
 #endif
 __FBSDID("$FreeBSD$");
 
-#include <sys/types.h>
+#include <stdlib.h>
 #include <wchar.h>
+#include <bsd/wchar.h>
 
 /*
  * Copy src to string dst of size siz.  At most siz-1 characters

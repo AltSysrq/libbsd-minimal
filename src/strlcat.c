@@ -16,8 +16,9 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include <sys/types.h>
 #include <string.h>
+#include <stdlib.h>
+#include <bsd/string.h>
 
 /*
  * Appends src to string dst of size siz (unlike strncat, siz is the

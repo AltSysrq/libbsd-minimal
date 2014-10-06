@@ -24,11 +24,13 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <sys/cdefs.h>
+#include <bsd/sys/cdefs.h>
 
 #include <stdlib.h>
+#include <bsd/stdlib.h>
 #include <stdio.h>
 #include <wchar.h>
+#include <bsd/wchar.h>
 
 struct filewbuf {
 	FILE *fp;
