@@ -25,7 +25,7 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/* 
+/*
   Rejected in glibc (http://sourceware.org/ml/libc-alpha/2006-03/msg00125.html)
 */
 
@@ -33,11 +33,12 @@
 #include <string.h>
 #include <stdlib.h>
 
-#ifdef HAVE___PROGNAME
-extern const char *__progname;
-#else
+/* Always assume nobody else defines it.
+ *
+ * On mingw32, configure seems to think it exists, but it can't be found at
+ * link time.
+ */
 static const char *__progname = NULL;
-#endif
 
 const char *
 getprogname(void)

@@ -31,7 +31,8 @@ There is no <bsd/bsd.h>, since no program needing it as a compatibility layer
 would include it anyway.
 
 I do not know whether the headers work under MSVC. <bsd/sys/freebsd-cdefs.h>
-could potentially cause problems.
+could potentially cause problems. No attempt was made to make this usable as a
+Windows DLL. It can only be used as a static library on that platform.
 
 More information on the original libbsd can be found at the locations below.
 

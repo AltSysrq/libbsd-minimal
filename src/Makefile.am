@@ -11,7 +11,7 @@ lib_LTLIBRARIES = libbsd.la
 lib_LIBRARIES =
 
 libbsd_la_LDFLAGS = \
-	-version-number $(LIBBSD_ABI)
+	-version-number $(LIBBSD_ABI) -no-undefined
 libbsd_la_SOURCES = \
 	err.c \
 	progname.c \
